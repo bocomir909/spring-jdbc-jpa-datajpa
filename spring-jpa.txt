@@ -1,0 +1,48 @@
+Spring JPA and Hibernate
+
+JDBC->Spring JDBC (jdbc template)->Spring JPA->Spring Data JPA
+----------------------------------------------
+H2 - in memory DB
+-In properties add these options to see h2 web console on localhost:
+spring.h2.console.enabled=true
+
+-Configure static URL for h2:
+spring.datasource.url=jdbc:h2:mem:X
+
+-Add startup schema and data with files .sql in resources folder. They will be used/picked up when the app starts
+------------------------------------------------
+Spring JDBC
+
+-uses Jdbc template to query DB
+
+-queryForObject() is used to retrieve a single object/row. If multiple results/rows are returned it will throw error!
+------------------------------------------------
+JPA
+
+-Map entities to data in DB, no need to worry about queries
+
+@Entity - map java object/bean to table
+@Id
+@Column(name="..."). In case the name of the DB column does not match the entity field name
+
+JPA talks to DB via EntityManager instead of jdbc template
+-use @PersistenceContext on entity manager instead of @Autowired
+Operations on entitiy manager:
+merge - insert
+find - similar to select
+remove - delete from DB
+
+To see the sql queries by JPA
+spring.jpa.show-sql=true
+------------------------------------------------
+Spring Data JPA
+
+-Make it even more easier than JPA and entity manager
+-Define @Entities and create interface with @Repository and extend JpaRepository<T,ID>. This create a CRUD DB interface
+-Option to add custom methods if they dont exist by default. They need to follow naming convetion.
+For example:
+findByX(...)
+
+-Options for derived queries
+
+JPA is an API interface while Hibernate is an JPA implementation of it.
