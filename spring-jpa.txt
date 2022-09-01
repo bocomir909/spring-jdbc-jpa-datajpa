@@ -46,3 +46,6 @@ findByX(...)
 -Options for derived queries
 
 JPA is an API interface while Hibernate is an JPA implementation of it.
+
+Spring Data Jdbc vs Spring Data JPA
+https://ordina-jworks.github.io/java/2020/01/02/Spring-Data-Jdbc.html#:~:text=Spring%20JDBC%20only%20helps%20with,the%20performance%20of%20your%20application.
